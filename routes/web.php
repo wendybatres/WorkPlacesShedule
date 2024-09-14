@@ -7,6 +7,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\OauthController;
+use App\Http\Controllers\RolesController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\WorkgroupsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NoticeInvoiceCreated;
@@ -26,6 +29,12 @@ Route::middleware(['auth'])->group(function () {
   Route::resource('invoices', InvoiceController::class)->only(['index', 'store']);
   Route::resource('products', ProductController::class);
   Route::resource('orders', OrderController::class)->only('store');
+
+  //BOOTCAMP
+  Route::resource('roles', RolesController::class);
+  Route::resource('users', UsersController::class);
+  Route::resource('workgroups', WorkgroupsController::class);
+
 });
 
 Route::get('redirect/github', [OauthController::class, 'redirectGithub']);
