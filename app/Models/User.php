@@ -24,7 +24,7 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-
+    
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -61,5 +61,10 @@ class User extends Authenticatable
     public function isCustomer()
     {
         return $this->role == static::CUSTOMER;
+    }
+
+    public function userIdBase()
+    {
+        return $this->id;
     }
 }
