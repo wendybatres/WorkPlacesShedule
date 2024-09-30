@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="row d-flex justify-content-center">
-  <div class="col-sm-5">
+  <div class="col-sm-8">
     <div class="card">
       <div class="card-body">
-        <h3>Create product</h3>
-        <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+        <h3>Crear Grupo de Trabajo</h3>
+        <form action="{{ route('workgroups.store') }}" method="POST" enctype="multipart/form-data">
           @csrf
-          @include('products._form', ['product' => $product])
+          @include('workgroups._form', $workgroup)
         </form>
       </div>
     </div>

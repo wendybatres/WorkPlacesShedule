@@ -1,12 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\OauthController;
+
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\WorkgroupsController;
@@ -67,4 +64,4 @@ Route::post('webhook', function () {
       'code' => 'ok'
     ]
   ]);
-});;
+});

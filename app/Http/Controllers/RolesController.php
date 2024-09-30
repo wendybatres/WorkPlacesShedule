@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 
 class RolesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $role = Roles::all();
+        return view('roles.index', [
+            'roles' => $role
+        ]);
     }
 
     /**
@@ -20,7 +20,9 @@ class RolesController extends Controller
      */
     public function create()
     {
-        //
+        return view('roles.create',[
+            'role' => new Roles
+        ]);
     }
 
     /**
@@ -28,38 +30,46 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Roles $roles)
-    {
-        //
+        Roles::create($this->getParams($request));
+        return redirect()->route('roles.index')->with('success', 'Rol creado correctamente');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Roles $roles)
+    public function edit(Roles $role)
     {
-        //
+        return view('roles.edit',[
+            'role' => $role
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Roles $roles)
+    public function update(Request $request, Roles $role)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string'
+        ]);
+        $role->update($validatedData);
+        return redirect()->route('roles.index')->with('success', 'Rol actualizado correctamente');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Roles $roles)
+    public function destroy(Roles $role)
     {
-        //
+        $role->delete();
+        return redirect()->route('roles.index')->with('success', 'Rol eliminado correctamente');
+        
+    }
+
+    public function getParams($request)
+    {
+        $params = $request->all();
+        return $params;
     }
 }
