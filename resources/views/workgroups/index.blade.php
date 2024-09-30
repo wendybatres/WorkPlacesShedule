@@ -11,7 +11,7 @@
                 {{ $message }}
             </div>
         @endif
-        <a href="{{ route('workgroups.create') }}" class="btn btn-primary">+ WorkGroup</a>
+        <a href="{{ route('workgroups.create') }}" class="btn btn-primary">+ Grupo de Trabajo</a>
         <table class="table">
           <thead>
             <tr>

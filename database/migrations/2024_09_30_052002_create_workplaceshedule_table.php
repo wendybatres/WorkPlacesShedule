@@ -6,9 +6,12 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
-        Schema::create('workplacesshedule', function (Blueprint $table) {
+        Schema::create('workplaceshedule', function (Blueprint $table) {
             $table->id(); // Campo ID autoincremental
             $table->integer('userid');
             $table->dateTime('shedule');
@@ -20,12 +23,14 @@ return new class extends Migration
             $table->index('userid');
 
             $table->unique(['userid', 'shedule']);
-
         });
     }
 
-    public function down()
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
-        Schema::dropIfExists('workplacesshedule');
+        Schema::dropIfExists('workplaceshedules');
     }
 };
