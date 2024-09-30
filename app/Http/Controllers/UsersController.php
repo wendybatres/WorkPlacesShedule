@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $user = auth()->user()->get();
+        return view('users.index', [
+            'users' => $user
+        ]);
     }
 
     /**
@@ -20,7 +20,9 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create',[
+            'user' => new Users
+        ]);
     }
 
     /**
@@ -28,38 +30,41 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Users $users)
-    {
-        //
+        Users::create($this->getParams($request));
+        return redirect()->route('users.index')->with('success', 'Usuario creado correctamente');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Users $users)
+    public function edit(Users $user)
     {
-        //
+        return view('users.edit',[
+            'user' => $user
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Users $users)
+    public function update(Request $request, Users $user)
     {
-        //
+        $user->update($this->getParams($request));
+        return redirect()->route('users.index')->with('success', 'Usuario actualizado correctamente');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Users $users)
+    public function destroy(Users $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('users.index')->with('success', 'Usuario eliminado correctamente');
+    }
+
+    public function getParams($request)
+    {
+        $params = $request->all();
+        return $params;
     }
 }

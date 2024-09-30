@@ -11,8 +11,9 @@ class Users extends Authenticatable
     use HasFactory, Notifiable;
 
     const ADMIN = 1;
-    const LEADERSHIP = 2;
-    const DEVELOPER = 3;
+    const CUSTOMER = 2;
+    const LEADERSHIP = 3;
+    const DEVELOPER = 4;
 
     /**
      * The attributes that are mass assignable.
@@ -66,5 +67,10 @@ class Users extends Authenticatable
     public function isDeveloper()
     {
         return $this->role == static::DEVELOPER;
+    }
+
+    public function isCustomer()
+    {
+        return $this->role == static::CUSTOMER;
     }
 }
