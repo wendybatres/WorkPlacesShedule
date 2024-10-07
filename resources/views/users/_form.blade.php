@@ -14,6 +14,28 @@
   <input type="password" class="form-control" name="password" id="password" value="{{ old('password', $user->password) }}">
   @error('password') <p style="color: red;">Campo es requerido</p> @enderror
 </div>
+
+<div class="mb-3">
+  <label for="rolId" class="form-label">Rol</label>
+  <select name="rolId" class="form-control">
+    @foreach($roles as $rol)
+    <option value="{{ $rol->id }}"
+      @selected($rol->id == $user->rolId)>{{ $rol->name }}</option>
+    @endforeach
+  </select>
+  @error('rolId') <p style="color: red;">Campo es requerido</p> @enderror
+</div>
+
+<div class="mb-3">
+  <label for="workgroupId" class="form-label">Grupo de Trabajo</label>
+  <select name="workgroupId" class="form-control">
+    @foreach($workgroups as $workgroup)
+    <option value="{{ $workgroup->id }}"
+      @selected($workgroup->id == $user->workgroupId)>{{ $workgroup->name }}</option>
+    @endforeach
+  </select>
+  @error('workgroupId') <p style="color: red;">Campo es requerido</p> @enderror
+</div>
 <div class="row">
   <button type="submit" class="btn btn-primary">Guardar Usuario</button>
 </div>

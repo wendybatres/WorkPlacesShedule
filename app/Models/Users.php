@@ -24,6 +24,8 @@ class Users extends Authenticatable
         'name',
         'email',
         'password',
+        'workgroupId',
+        'rolId'
     ];
 
     /**

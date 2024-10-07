@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Users;
+use App\Models\Roles;
+use App\Models\Workgroups;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -21,7 +23,9 @@ class UsersController extends Controller
     public function create()
     {
         return view('users.create',[
-            'user' => new Users
+            'user' => new Users,
+            'roles' => Roles::all(),
+            'workgroups' => Workgroups::all()
         ]);
     }
 
@@ -40,7 +44,9 @@ class UsersController extends Controller
     public function edit(Users $user)
     {
         return view('users.edit',[
-            'user' => $user
+            'user' => $user,
+            'roles' => Roles::all(),
+            'workgroups' => Workgroups::all()
         ]);
     }
 

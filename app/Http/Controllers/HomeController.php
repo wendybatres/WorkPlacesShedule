@@ -32,7 +32,7 @@ class HomeController extends Controller
 
 
         $currentDate = Carbon::today();
-        $daysOfWeek = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+        $daysOfWeek = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
         $calendarWeeks = $this->getCalendarWeeks($currentDate);
         $users = User::all();
 
@@ -46,7 +46,7 @@ class HomeController extends Controller
             ->with('modalVisible' , false)
             ->with('mostrarError' , false)
             ->with('errorMessage' , '');
-        
+                   
     }
 
 
